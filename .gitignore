@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+.netlify
+.playwright-cli
+node_modules
+dist
+*.zip
+.env
+.env.*
+!.env.example

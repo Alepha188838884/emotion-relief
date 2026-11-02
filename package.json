@@ -1,0 +1,12 @@
+{
+  "name": "emotion-relief-space",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 4173",
+    "build": "node scripts/build.mjs",
+    "build:netlify": "npm run build",
+    "preview": "cd dist && python3 -m http.server 4174"
+  }
+}

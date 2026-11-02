@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calmdown Machine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header id="module-1" class="hero reveal">
+      <div class="hero-content">
+        <p class="module-tag">Module 1 · Calm Entry</p>
+        <h1>Calm Learning Space</h1>
+        <p class="hero-lead">
+          This is a low-stimulation space you can step into anytime. No explanations, no rushing,
+          just let your body slow down first.
+        </p>
+        <div class="hero-actions">
+          <button class="button primary" data-quiet-open>Enter quiet space</button>
+          <p class="hero-hint">No explaining · No tasks · Just stay here for a moment</p>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orb"></div>
+        <div class="orb-ring"></div>
+        <div class="soft-grid"></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="quick-nav card reveal" aria-labelledby="quickNavTitle">
+        <div class="quick-nav-header">
+          <p class="module-tag">Quick Access</p>
+          <h2 id="quickNavTitle">Go straight to the module you need right now</h2>
+          <p>If you only want one tool, you can jump there directly instead of following the full sequence.</p>
+        </div>
+        <nav class="quick-nav-links" aria-label="Module quick access">
+          <a class="button ghost nav-chip" href="#module-1">1 Calm Entry</a>
+          <a class="button ghost nav-chip" href="#module-2">2 Breathing</a>
+          <a class="button ghost nav-chip" href="#module-3">3 Soft Focus</a>
+          <a class="button ghost nav-chip" href="#module-4">4 Wordless Release</a>
+          <a class="button ghost nav-chip" href="#module-5">5 Grounding</a>
+          <a class="button ghost nav-chip" href="#module-6">6 Emotion Meter</a>
+          <a class="button ghost nav-chip" href="#module-7">7 Worry Parking</a>
+          <a class="button ghost nav-chip" href="#module-8">8 Ask for Help</a>
+          <a class="button ghost nav-chip" href="#module-9">9 Micro Task Start</a>
+          <a class="button ghost nav-chip" href="#module-10">10 Return to Study</a>
+        </nav>
+      </section>
+
+      <section id="module-2" class="module card reveal">
+        <div class="module-text">
+          <p class="module-tag">Module 2</p>
+          <h2>Breathing Rhythm</h2>
+          <p>Let a steady rhythm help your body settle. There is no target and nothing to get right. Just follow the pace.</p>
+          <div class="control-group">
+            <button class="button ghost active" data-breath="slow" aria-pressed="true">Slow</button>
+            <button class="button ghost" data-breath="slower" aria-pressed="false">Slower</button>
+          </div>
+          <p id="breathingStatus" class="status-text" aria-live="polite">Current rhythm: Slow</p>
+        </div>
+        <div class="module-visual">
+          <div class="breathing-circle" aria-hidden="true"></div>
+          <p class="visual-caption">Watch it expand, then settle back</p>
+        </div>
+      </section>
+
+      <section id="module-3" class="module card reveal">
+        <div class="module-text">
+          <p class="module-tag">Module 3</p>
+          <h2>Soft Sensory Focus</h2>
+          <p>Just watch the slow-moving lights. Sound stays off by default, and you can turn on a very low hum if it helps.</p>
+          <button id="toggleSound" class="button ghost" aria-pressed="false">Low hum: Off</button>
+          <p class="status-text">Just look. No decisions needed.</p>
+        </div>
+        <div class="module-visual">
+          <canvas id="softCanvas" aria-label="Soft drifting sensory lights"></canvas>
+        </div>
+      </section>
+
+      <section id="module-4" class="module card reveal">
+        <div class="module-text">
+          <p class="module-tag">Module 4</p>
+          <h2>Wordless Release</h2>
+          <p>If your mind feels crowded, you do not have to explain it first. Let your hands carry some of that pressure.</p>
+          <label class="slider" for="pressureRange">
+            <span>Current pressure</span>
+            <input id="pressureRange" type="range" min="0" max="100" value="40" />
+          </label>
+          <p id="pressureStatus" class="status-text" aria-live="polite">Current pressure: 40 / 100</p>
+          <button id="scatterButton" class="button ghost">Gently scatter</button>
+        </div>
+        <div class="module-visual">
+          <div id="releaseField" class="release-field" aria-label="Emotion release area"></div>
+          <p class="visual-caption">Tap through it or drag across it</p>
+        </div>
+      </section>
+
+      <section id="module-5" class="module card reveal">
+        <div class="module-text">
+          <p class="module-tag">Module 5</p>
+          <h2>5-Senses Grounding</h2>
+          <p>If your thoughts feel far away, use these steps to bring your attention back to what is here right now.</p>
+          <div class="grounding-grid" role="group" aria-label="Five-senses grounding steps">
+            <button class="grounding-step" data-ground-step="0" aria-pressed="false">
+              <span class="grounding-number">1</span>
+              <span>Notice 5 things you can see</span>
+            </button>
+            <button class="grounding-step" data-ground-step="1" aria-pressed="false">
+              <span class="grounding-number">2</span>
+              <span>Feel 4 textures</span>
+            </button>
+            <button class="grounding-step" data-ground-step="2" aria-pressed="false">
+              <span class="grounding-number">3</span>
+              <span>Hear 3 sounds</span>
+            </button>
+            <button class="grounding-step" data-ground-step="3" aria-pressed="false">
+              <span class="grounding-number">4</span>
+              <span>Smell 2 scents</span>
+            </button>
+            <button class="grounding-step" data-ground-step="4" aria-pressed="false">
+              <span class="grounding-number">5</span>
+              <span>Notice 1 taste or breath sensation</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <button id="resetGrounding" class="button ghost small">Start over</button>
+          </div>
+          <p id="groundingStatus" class="status-text" aria-live="polite">Completed 0 / 5. Start with the easiest step.</p>
+        </div>
+        <div class="module-visual">
+          <div class="insight-box">
+            <p>No need to find the “right” answer. Just place your attention on something that is truly here.</p>
+          </div>
+          <p class="visual-caption">Any small bit counts</p>
+        </div>
+      </section>
+
+      <section id="module-6" class="module card reveal">
+        <div class="module-text">
+          <p class="module-tag">Module 6</p>
+          <h2>Emotion Meter &amp; Support</h2>
+          <p>Name what this feeling is, then estimate how strong it feels right now. The page will give a matching suggestion.</p>
+          <div class="control-group emotion-buttons" role="group" aria-label="Current emotion selection">
+            <button class="button ghost active" data-emotion="anxious" aria-pressed="true">Anxious</button>
+            <button class="button ghost" data-emotion="irritated" aria-pressed="false">Irritated</button>
+            <button class="button ghost" data-emotion="hurt" aria-pressed="false">Hurt</button>
+            <button class="button ghost" data-emotion="tired" aria-pressed="false">Tired</button>
+            <button class="button ghost" data-emotion="numb" aria-pressed="false">Numb</button>
+          </div>
+          <label class="slider" for="emotionRange">
+            <span>Current intensity</span>
+            <input id="emotionRange" type="range" min="0" max="100" value="40" />
+          </label>
+          <p id="emotionLevel" class="status-text" aria-live="polite">Current intensity: 40 / 100 · Low</p>
+        </div>
+        <div class="module-visual">
+          <div id="emotionResult" class="insight-box" aria-live="polite">
+            <p class="insight-summary">You have already noticed that your body feels a little tense. That is a useful first step.</p>
+            <ul class="advice-list">
+              <li>Lengthen one exhale before deciding what comes next.</li>
+              <li>Stay with the nearest task instead of thinking through the whole outcome.</li>
+            </ul>
+          </div>
+          <p class="visual-caption">Your feeling and intensity both shape the suggestion</p>
+        </div>
+      </section>
+
+      <section id="module-7" class="module card reveal">
+        <div class="module-text">
+          <p class="module-tag">Module 7</p>
+          <h2>Worry Parking</h2>
+          <p>If too many thoughts are spinning at once, place one of them here for a moment. It will not be saved or analyzed.</p>
+          <label class="stack-field" for="worryInput">
+            <span>Write down one thought that keeps circling</span>
+            <textarea
+              id="worryInput"
+              rows="4"
+              maxlength="120"
+              placeholder="For example: I am afraid I still will not finish this question."
+            ></textarea>
+          </label>
+          <div class="control-group">
+            <button id="addWorryButton" class="button primary small">Park this thought for now</button>
+            <button id="clearWorriesButton" class="button ghost small">Clear the board</button>
+          </div>
+          <p id="worryStatus" class="status-text" aria-live="polite">You can store up to 6 items here. Refreshing the page clears them.</p>
+        </div>
+        <div class="module-visual align-stretch">
+          <div id="worryList" class="worry-list" aria-live="polite"></div>
+          <p class="visual-caption">Once it is written down, you do not have to hold it so tightly</p>
+        </div>
+      </section>
+
+      <section id="module-8" class="module card reveal">
+        <div class="module-text">
+          <p class="module-tag">Module 8</p>
+          <h2>One-Line Help Request</h2>
+          <p>If you already know you need outside support, this module helps you shape the sentence before you send it.</p>
+          <div class="choice-stack">
+            <div class="choice-group">
+              <p class="choice-label">Contact</p>
+              <div class="control-group" role="group" aria-label="Contact choice">
+                <button class="button ghost active" data-contact="teacher" aria-pressed="true">Teacher</button>
+                <button class="button ghost" data-contact="classmate" aria-pressed="false">Classmate</button>
+                <button class="button ghost" data-contact="family" aria-pressed="false">Family</button>
+              </div>
+            </div>
+            <div class="choice-group">
+              <p class="choice-label">What I need most right now</p>
+              <div class="control-group" role="group" aria-label="Kind of support">
+                <button class="button ghost active" data-need="pause" aria-pressed="true">Need a pause</button>
+                <button class="button ghost" data-need="listen" aria-pressed="false">Need you to listen</button>
+                <button class="button ghost" data-need="first-step" aria-pressed="false">Help me find the first step</button>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <button id="copySupportButton" class="button primary small">Copy this line</button>
+          </div>
+          <p id="supportStatus" class="status-text" aria-live="polite">You can copy it or say it in your own words.</p>
+        </div>
+        <div class="module-visual align-stretch">
+          <label class="stack-field" for="supportOutput">
+            <span>A message you can send right away</span>
+            <textarea id="supportOutput" class="message-box" rows="5" readonly aria-live="polite"></textarea>
+          </label>
+          <p class="visual-caption">If copy fails, the text stays here for manual copy</p>
+        </div>
+      </section>
+
+      <section id="module-9" class="module card reveal">
+        <div class="module-text">
+          <p class="module-tag">Module 9</p>
+          <h2>Micro Task Starter</h2>
+          <p>Turn “I need to study” into one small action and give it a short block of time. Starting small matters more than starting perfectly.</p>
+          <div class="choice-stack">
+            <div class="choice-group">
+              <p class="choice-label">Which start feels closest right now</p>
+              <div class="control-group" role="group" aria-label="Task type">
+                <button class="button ghost active" data-task-type="read" aria-pressed="true">Read the prompt</button>
+                <button class="button ghost" data-task-type="organize" aria-pressed="false">Organize materials</button>
+                <button class="button ghost" data-task-type="write" aria-pressed="false">Write the first sentence</button>
+                <button class="button ghost" data-task-type="first-problem" aria-pressed="false">Do only the first part</button>
+              </div>
+            </div>
+            <div class="choice-group">
+              <p class="choice-label">How much time can you give yourself</p>
+              <div class="control-group" role="group" aria-label="Task duration">
+                <button class="button ghost" data-task-minutes="3" aria-pressed="false">3 min</button>
+                <button class="button ghost active" data-task-minutes="5" aria-pressed="true">5 min</button>
+                <button class="button ghost" data-task-minutes="10" aria-pressed="false">10 min</button>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <button id="generateTaskButton" class="button primary small">Generate one tiny step</button>
+          </div>
+          <p id="taskStatus" class="status-text" aria-live="polite">Generate a step first, then decide if you want to start the timer.</p>
+        </div>
+        <div class="module-visual align-stretch">
+          <div class="task-panel">
+            <p id="microTaskOutput" class="task-output" aria-live="polite">
+              One small action you can start right away will appear here.
+            </p>
+            <div class="timer-box">
+              <p id="taskTimerDisplay" class="timer-display">05:00</p>
+              <div class="control-group">
+                <button id="startTaskTimer" class="button primary small" disabled>Start</button>
+                <button id="pauseTaskTimer" class="button ghost small" disabled>Pause</button>
+                <button id="resetTaskTimer" class="button ghost small" disabled>Reset</button>
+              </div>
+            </div>
+          </div>
+          <p class="visual-caption">Starting small still counts as moving forward</p>
+        </div>
+      </section>
+
+      <section id="module-10" class="module card reveal">
+        <div class="module-text">
+          <p class="module-tag">Module 10</p>
+          <h2>Return-to-Study Transition</h2>
+          <p>If the earlier modules helped you settle a little, you can choose a pace for easing back in. Nothing here has to start immediately.</p>
+          <div class="control-group">
+            <button class="button primary small" data-return="ready" aria-pressed="false">I can ease back in</button>
+            <button class="button ghost small" data-return="more" aria-pressed="false">I need a little more time</button>
+          </div>
+          <p id="transitionMessage" class="status-text" aria-live="polite">
+            Choose a pace first. Nothing will auto-start for you.
+          </p>
+        </div>
+        <div class="module-visual">
+          <div class="transition-path" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p class="visual-caption">Returning can be gradual</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>This one-page demo is for short emotional decompression during study.</p>
+    </footer>
+
+    <div id="quietOverlay" class="quiet-overlay" aria-hidden="true">
+      <button id="closeQuiet" class="close-quiet" aria-label="Exit quiet space">×</button>
+      <div class="quiet-orb" aria-hidden="true"></div>
+      <div class="quiet-ripple" aria-hidden="true"></div>
+      <p class="quiet-note">Stay here for a moment. You do not need to feel ready yet.</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
